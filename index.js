@@ -8,6 +8,6 @@ bot1.on('message', (message) => {
 });
 
 
-bot1.login("MzY4OTU1MjUxMzY3MjE1MTA1.DMRg8Q.T2hb5jKhPt77_Dcy0BKss_9mnG8");
+bot1.login(process.env.BOT_TOKEN);
 
 
