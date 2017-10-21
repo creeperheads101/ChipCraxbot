@@ -9,9 +9,12 @@ bot1.on('message', (message) => {
 
 bot1.on('message', (message) => {
     if(message.content == '!whitelist nge78ghb3') {
-        message.author.sendMessage("")
+        var role = member.guild.roles.find('name', 'Buyers');
+        member.addRole(role)
     }
 });
+
+
 
 
 
