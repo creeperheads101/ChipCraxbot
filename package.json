@@ -1,13 +1,21 @@
 {
-  "name": "Test",
-  "description": "Test",
-  "version": "0.0.0",
+  "name": "ccbot",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "discord.js": "11.1.0",
-    "request": "2.81.0"
+    "cheerio": "^1.0.0-rc.2",
+    "discord.js": "^11.2.1",
+    "http": "0.0.0",
+    "javascript-web-client": "^1.0.0",
+    "ms": "^2.1.1",
+    "mysql": "^2.15.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   }
 }
