@@ -146,6 +146,13 @@ client.on('message', message => {
 
 
     };
+    if (msg.startsWith(prefix+'PING')) { 
+
+        
+        message.channel.send("@everyone");
+
+
+    };
     if (msg.startsWith(prefix+'HELP')) { 
         message.channel.send({embed: {
             color: 3447003,
