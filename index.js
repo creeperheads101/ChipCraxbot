@@ -127,12 +127,6 @@ client.on('message', message => {
         }
         
     };
-    if (msg.startsWith('<@182980770401353730>')) { 
-
-        message.member.addRole(Muted).catch(console.error);
-        message.channel.send(`Why did you ping him? You have been muted for ${ms(ms(time), {long: true})}`);
-
-    };
     if (msg.startsWith(prefix + 'INFO')) { 
 
 
