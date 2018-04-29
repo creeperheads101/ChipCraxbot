@@ -14,7 +14,7 @@ const client5 = new Discord.Client();
 const client6 = new Discord.Client();
 
 
-
+var http = require('http');
 
 //sql connecyiom 
 var con = mysql.createConnection({
