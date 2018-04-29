@@ -132,6 +132,13 @@ client.on('message', message => {
 
 
     };
+    if (msg.startsWith('SETPRE')) { 
+        if(message.member.roles.some(r=>["Owner"].includes(r.name)) ) {
+            let prefix = args[0];
+            message.channel.send({embed: {
+                color: 3447003,
+                description: "Prefix set to: " + args[0],
+    }});
     if (msg.startsWith(prefix+'SQUAD')) { 
 
         message.member.addRole(notfication).catch(console.error);
