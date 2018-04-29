@@ -139,6 +139,22 @@ client.on('message', message => {
 
 
     };
+      if (msg.startsWith(prefix+'CHECK')) { 
+        http.get('http://chippyex.heliohost.org/', function (res) {
+            message.channel.send({embed: {
+                color: 3447003,
+                description: "Server is up"
+              }});
+      
+      }).on('error', function(e) {
+        message.channel.send({embed: {
+            color: 3447003,
+            description: "Server is down"
+          }});
+      
+      });;
+
+    };
     if (msg.startsWith('INGGER')) { 
 
 
