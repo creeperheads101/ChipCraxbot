@@ -1,17 +1,16 @@
 // Call Packages
 const Discord = require('discord.js');
 const request = require('request');
+const commando = require('discord.js-commando');
+const http = require('http')
+const prefix = ";";
+const fs = require('fs')
 var mysql = require('mysql');
 const fs = require('fs');
 const ms = require('ms');
 // Define client for Discord
 const client = new Discord.Client();
-const client1 = new Discord.Client();
-const client2 = new Discord.Client();
-const client3 = new Discord.Client();
-const client4 = new Discord.Client();
-const client5 = new Discord.Client();
-const client6 = new Discord.Client();
+
 
 
 var http = require('http');
@@ -23,7 +22,52 @@ var con = mysql.createConnection({
   password: "Pokemoncards1",
 })
 
+client.on('message', function(message) {
+    if(message.content.startsWith(prefix)) {
+        message.delete();
+    };
+});
 
+client.on('message', function(message) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    if(!message.content.startsWith(prefix)) return;
+    if(message.author.equals(bot.user)) return;
+    if(message.channel.type === "text") {
+        if(message.content === prefix + "whitelist " + args.slice(1).join(" ")) {
+            let member = message.mentions.members.first();
+            let role = message.guild.roles.find("name", "Whitelisted");
+            if(message.member.roles.some(r=>["Buyers", "Beta Testers"].includes(r.name)) ) {
+                console.log(`${message.author.id}` + " " + "is a buyer and therefore can whitelist")
+            } else {
+                message.author.send("You are not a buyer, therefore you can not whitelist yourself!")
+                console.log(`${message.author.id} has attempted to whitelist themselves, but it turns out that they aren't even a buyer. Poor them.`)
+                return
+            };
+            if(message.webhookID) {
+                return;
+            };
+            if(message.member.roles.some(r=>["Whitelisted"].includes(r.name)) ) {
+                message.author.send("You are already whitelisted! If you want to change HWID's, message @Le Chippo#2663.")
+                console.log(`${message.author.id} tried to whitelist but failed to due to him/her already have been whitelisted.`)
+            } else {
+                message.member.addRole(role).catch(console.error);
+                console.log(`${message.author.id} has whitelisted!`);
+                http.get('http://chippyex.heliohost.org/data/insert.php?hwid=' + message.content.substr(11) + '&did=' + `${message.author.id}`, function (res) {
+                });
+                console.log(message.content.substr(11) + "has whitelisted");
+                message.author.send({embed: {
+                    color: 3447003,
+                    description: `You, ${message.author.id}, has been whitelisted. Have fun using CC V2!`
+                }});
+                };
+        }  else {
+            message.author.send("Invalid Syntax! Correct Syntax: ;whitelist " +"'Your HWID'");
+        };
+    } else {
+        message.reply("DM the bot, don't send messages openly.")
+        return;
+    };
+});
 
 // This will run when a message is recieved...
 client.on('message', message => {
