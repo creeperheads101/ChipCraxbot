@@ -63,11 +63,7 @@ client.on('message', function(message) {
 client.on('message', message => {
 
     // Variables
-    let whitelistedrole = message.guild.roles.get("409205489881317376");
-    let premiumRole = message.guild.roles.get("391720017525211138");  
-    let Muted = message.guild.roles.get("399356448578076683");   
-    let notfication = message.guild.roles.get("403050305287356417");
-    let prefix = ";";
+    let premiumRole = message.guild.roles.get("458826121459400706");  
     let time = "3m";
     let msg = message.content.toUpperCase();
     let cont = message.content.slice(prefix.length).split(" ");
@@ -82,7 +78,7 @@ client.on('message', message => {
             if(keys[i]==key){
                 wrong = false;
                 yey();
-            }else if(i == keys.length -1 && wrong == true){
+            } else if(i == keys.length -1 && wrong == true){
                 aw();
             }
         }
@@ -203,8 +199,4 @@ client.on('ready', () => {
 
 // <token>
 
-
-
 client.login(process.env.BOT_TOKEN);
-
-
