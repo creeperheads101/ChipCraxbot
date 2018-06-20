@@ -4,23 +4,13 @@ const request = require('request');
 const commando = require('discord.js-commando');
 const http = require('http')
 const prefix = ";";
-const fs = require('fs')
+
 var mysql = require('mysql');
 const fs = require('fs');
 const ms = require('ms');
 // Define client for Discord
 const client = new Discord.Client();
 
-
-
-var http = require('http');
-
-//sql connecyiom 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "chipset_main",
-  password: "Pokemoncards1",
-})
 
 client.on('message', function(message) {
     if(message.content.startsWith(prefix)) {
@@ -31,7 +21,7 @@ client.on('message', function(message) {
 client.on('message', function(message) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     if(!message.content.startsWith(prefix)) return;
-    if(message.author.equals(bot.user)) return;
+    if(message.author.equals(client.user)) return;
     if(message.channel.type === "text") {
         if(message.content === prefix + "whitelist " + args.slice(1).join(" ")) {
             let member = message.mentions.members.first();
@@ -61,7 +51,7 @@ client.on('message', function(message) {
                 }});
                 };
         }  else {
-            message.author.send("Invalid Syntax! Correct Syntax: ;whitelist " +"'Your HWID'");
+
         };
     } else {
         message.reply("DM the bot, don't send messages openly.")
@@ -131,9 +121,7 @@ client.on('message', message => {
         }
         return false;
     }
-    function whitelist(HWID){
 
-    }
 
 
 
@@ -149,41 +137,9 @@ client.on('message', message => {
             isValid(args[0]);
         }
     };
-    let numberofmessages = 2;
-    if (msg.startsWith(prefix+'WHITELIST') || msg.startsWith(prefix+'Aservt79rvt8rvt79789t8679vtvb679rstb6789srtvUTH') || msg.startsWith(prefix+'CODe4vt6yh78se4vt6iny78t6h78sev45t6h78v68th7vsE')) { 
-        if(message.member.roles.some(r=>["Buyer"].includes(r.name)) ) {
-            if(!message.member.roles.some(r=>["Whitelisted"].includes(r.name)) ) {
-            message.member.addRole(whitelistedrole).catch(console.error);
-            whitelist(args[0]);
-            message.channel.send("Filler");
-            let messagecount = parseInt(numberofmessages);
-             message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
-            message.channel.send({embed: {
-                color: 3447003,
-                description: "hwid added to database"
-              }});
-
-          }
-        
-          else {
-            message.channel.send("Already Whitelisted");
-          }  
-        }
-        
-    };
-    if (msg.startsWith(prefix + 'INFO')) { 
 
 
-
-    };
-
-    if (msg.startsWith(prefix+'SQUAD')) { 
-
-        message.member.addRole(notfication).catch(console.error);
-        message.channel.send("Your now in the notification squad :D");
-
-
-    };
+   
       if (msg.startsWith(prefix+'CHECK')) { 
         http.get('http://chippyex.heliohost.org/', function (res) {
             message.channel.send({embed: {
@@ -246,6 +202,8 @@ client.on('ready', () => {
 })
 
 // <token>
+
+
 
 client.login(process.env.BOT_TOKEN);
 
